@@ -32,6 +32,9 @@ class Builder
      */
     public function getQuery()
     {
+        // Empty array check for php < 7.4
+        if (count($this->scopes) == 0) return $this->query;
+
         return array_merge(
             array_merge(...array_values($this->scopes)),
             $this->query
