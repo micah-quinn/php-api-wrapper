@@ -77,9 +77,9 @@ class Api
     {
         $key = md5(__FUNCTION__.$endpoint.json_encode($filters));
 
-        if ($this->hasCache($key)) {
-            return $this->getCache($key);
-        }
+        // if ($this->hasCache($key)) {
+        //     return $this->getCache($key);
+        // }
 
         return $this->setCache(
             $key,
@@ -100,9 +100,9 @@ class Api
     {
         $uri = '/'.$endpoint.'/'.$id;
         $key = $uri.'?'.http_build_query($filters);
-        if ($this->hasCache($key)) {
-            return $this->getCache($key);
-        }
+        // if ($this->hasCache($key)) {
+        //     return $this->getCache($key);
+        // }
 
         return $this->getTransport()->request($uri, $filters) ?? [];
     }
